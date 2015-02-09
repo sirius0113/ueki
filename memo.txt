@@ -1,0 +1,212 @@
+●2015/01/28
+https://lexbz3142.cloud.dst.ibm.com/compass-svn/trunk/htdocs/
+
+
+●2014/15/19
+$dbHostName_sc_go = "sbybz3094.cloud.dst.ibm.com";
+
+●2014/12/17
+twitter
+id:EBB08JS@jp.ibm.com
+pw:masayoshi
+name:ueki0113
+
+●
+searchkey: "&email=SCGO@jp.ibm.com&l_name=SalesConnect&f_name=GO&password=ooo03ooo"
+
+●man power security
+ログインID： 193P140601_JPXP
+パスワード： experis
+
+
+●2014/8/26
+https://w3-connections.ibm.com/activities/service/html/mainpage#activitipage,1889f889-3143-46ad-beb2-e1af6ab3cfc7
+https://w3-connections.ibm.com/communities/service/html/communitystart?communityUuid=35cf1bf6-dba5-44d9-ae44-23d43faad654
+
+https://w3-connections.ibm.com/activities/service/html/mainpage#activitypage,bfdf6581-4be5-43e6-b11b-9fc29b0e807c
+
+●2014/8/18
+wkhtmltopdf http://www.yahoo.co.jp/ yahoo.pdf
+wkhtmltopdf http://www.yahoo.co.jp/ 日本ibm.pdf
+title-!"#$%&'()=~|{}[]`;:<>?_
+
+●2014/8/5
+cd c:\jsdoc-toolkit
+java -jar jsrun.jar app\run.js C:\pleiades\workspace\cpt\trunk\js\ -t=templates\jsdoc
+ドットインストール
+EBB08JS@jp.ibm.com
+id:ueki0113
+
+
+●2014/7/29
+lexbz180053.cloud.dst.ibm.com
+id: wwwrun
+pw: mxltcpt0
+
+docroot:  /usr/local/apache-wave/lab/cpt/htdocs/
+
+●2014/7/14
+[605270]
+[605275]
+
+[603118]
+pandoc http://localhost/pdf/index.php -o test20140715.rtf
+
+●2014/7/8
+wkhtmltopdf --cookie cptlc en_US --cookie conversation_id 53b64fcb60ff68180a000029 http://localhost/pdf/index2.php files/53b64fcb60ff68180a000029/IBM-Japan.pdf 2>&1
+cd c:\pleiades\workspace\cpt\trunk
+
+●2014/7/7
+
+<style type="text/css">
+<!--
+@font-face {
+font-family: 'MyFont';
+src: url(http://localhost/fonts/HelveticaNeueW01-45Ligh.ttf); (http://localhost/fonts/HelveticaNeueW01-45Ligh.ttf%29;)
+}
+-->
+</style>
+
+[598696]Update pdf logic
+[598704]Update proposal page design step2,6,7
+
+●2014/07/03
+https://cpt.somerslab.ibm.com/pdf/
+wkhtmltopdf -q --header-html https://cpt.somerslab.ibm.com/pdf/ test.pdf
+
+wkhtmltopdf http://cpt.somerslab.ibm.com/pdf/ test20.pdf
+
+/usr/local/apache-wave/lab/cpt/htdocs/pdf
+
+wkhtmltopdf --cookie conversation_id 539ab9b260ff68180f00002a http://localhost/pdf test.pdf
+
+wkhtmltopdf --cookie cptlc fr_FR  --cookie conversation_id 539ab9b260ff68180f00002a http://localhost/pdf test.pdf
+
+
+●2014/07/02
+http://wkhtmltopdf.org/downloads.html
+12.0ダウンロードできない、symantecでエラー
+
+○windows版
+https://code.google.com/p/wkhtmltopdf/downloads/list?can=1
+wkhtmltox-0.11.0_rc1-installer.exe インストール
+;C:\Program Files (x86)\wkhtmltopdf パス追加
+
+
+wkhtmltopdf
+
+//	$com ="..\wkhtmltopdf\wkhtmltopdf.exe ..\pdf\index.html test.pdf 2>&1";// OK
+	$com ="..\wkhtmltopdf\wkhtmltopdf.exe http://localhost/pdf/index.php test.pdf 2>&1";// OK
+
+●2014/6/13
+wave2.somerslab.ibm.com へ　　ＵｓｅｒＩＤ／Ｐａｓｓｗｄ：　mongo/nosqldb4cpt
+db.addUser("mxlb705","hz705hzq")
+cd /usr/local/apache-wave/lab/cpt/htdocs/pdf/files
+
+
+
+●2014/6/3
+xampp/apache/conf修正
+
+ruby プロンプト
+cd c:\pleiades\workspace\cpt\trunk
+sass --watch sass:css --style compact
+
+cd \mongodb\bin
+mongod
+
+●2014/5/29
+cui版→×文字打てない
+suse11.3
+alt+ctrl vmから抜ける
+
+zypper ar http://download.opensuse.org/repositories/devel:/languages:/ruby/openSUSE_11.4/devel:languages:ruby.repo
+
+zypper ar http://download.opensuse.org/repositories/devel:/languages:/ruby:/extensions/openSUSE_11.4/devel:languages:ruby:extensions.repo
+
+
+●2014/5/28
+source ~/.bash_profile ;ruby version切り替え
+
+sudo yum install openssl-1.0.1e-16.el6_5.7.x86_64
+
+rbenv install --list
+bundle exec foreman start
+
+エラー
+/home/user/.rbenv/versions/1.9.3-p448/lib/ruby/gems/1.9.1/gems/moped-1.4.5/lib/moped/sockets/ssl.rb:1:
+in `require': cannot load such file -- openssl (LoadError)
+
+cd /tmp/ruby-build.20140527015826.22057/ruby-1.9.3-p448/ext/openssl
+
+
+●2014/5/27
+rbenv install 2.0.0-p481
+rbenv rehash
+rbenv global 1.9.3-p448
+gem install bundler
+
+rbenv install 1.9.3-p448
+
+$SHELL -l ←これをやらないとruby が動かない
+
+echo 'export PATH="$HOME/.ssajapan/rbenv/versions/1.9.3-p448/lib/ruby/gems/1.9.1/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc
+
+/home/user/.rbenv/versions/1.9.3-p448/lib/ruby/gems/1.9.1/gems/bundler-1.6.2/bin/bundle -v
+
+sudo apt-get install zlib1g-dev libssl-dev →×
+sudo yum install openssl-devel
+sudo yum install libxml2-devel
+sudo yum install libxslt1-devel
+
+nokogiri???
+gem install eventmachine -v '1.0.3'
+↓
+sudo yum install gcc*
+
+
+●*** [ossl_pkey_ec.o] Error 1
+curl -fsSL https://bugs.ruby-lang.org/projects/ruby-trunk/repository/revisions/41808/diff?format=diff | \
+  rbenv install --patch 1.9.3-p448
+
+
+●
+192.168.231.128
+
+
+fix Conduct a Team Opportunity Learning review
+
+●2014/5/19
+クラス名を変えると日付フィールドがうまくいかない
+console.log("xxx");
+	$("." + playbook.datepickerClassName).each(
+
+		function(){
+console.log("xxx datepicker");
+			$("." + playbook.datepickerClassName).datepicker();
+		}
+	);
+
+●2014/5/14
+Playbooks Plan the client conversation Ⅲ Fix
+Playbooks Plan the client conversation Ⅱ Fix
+Playbooks Plan the client conversation Fix
+
+Add Client Conversation Plan IV
+
+Conduct a team learning review
+
+●2014/5/8
+Client conversation plan update
+
+
+●2014/5/2
+openofficeがインストールできないので問い合わせ
+
+CIO TDJapan/Japan/IBM
+
+Apache OpenOffice4.0 の使用について
+
+AOO 4.0.1 → AOO 4.0.1 on グローバル ISSI APカタログ
+(AOOダウンロード ＋ インストールの所要時間は、有線LAN で 約20分 程度です。)

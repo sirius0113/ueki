@@ -1,0 +1,30 @@
+Åú2014/5/7
+sass auto generator command
+cd c:\pleiades\workspace\mclt\htdocs
+sass --watch sass:css --style compact
+
+redmine
+id:EBB08JS@jp.ibm.com
+pw:tokyo
+
+DoneDone
+id:ueki
+pw:masayoshi
+
+Åú2014/5/2
+intranet
+id:EBB08JS@jp.ibm.com
+pw:a6ajb5bb
+
+pc
+id:AABB08JS
+pw:ueki0113
+
+notes
+id:Masayoshi Ueki/Japan/Contr/IBM@IBMJP
+pw:sirius0113
+
+GSA
+id:ueki
+pw:sirius0113
+

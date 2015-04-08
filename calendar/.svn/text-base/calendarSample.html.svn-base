@@ -1,0 +1,39 @@
+<html>
+<head>
+<meta charset="utf-8">
+<!--
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+ -->
+<link rel="stylesheet" href="calendarSample.css">
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.1/angular.min.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script type="text/javascript" src="calendarSample.js"></script>
+<title>calendar</title>
+</head>
+<body ng-app="calendarApp">
+	<form novalidate name="myForm">
+		<!--	<div ng-controller="CalendarCtrl" ng-Init="calendar = calendar()"> -->
+		<h2>Angularjs calendar test page</h2>
+		<div ng-controller="CalendarCtrl">
+			<div>
+				<button ng-click="today()">today</button>
+				<button ng-click="delMonth()"><</button>
+				<button ng-click="incMonth()">></button>
+				<input type="number" name="year2" ng-model="year2" required style="width:100px;"">
+				<button ng-click="inputYear()" ng-disabled="myForm.$invalid">Year</button>
+				<span ng-show="myForm.year2.$error.required">Not input</span>
+			</div>
+			<p style="display: none">{{year2}}</p>
+			<p>{{year()}}/{{month()}}</p>
+			<table>
+				<th class="th" ng-repeat="head in header()">{{head}}</th>
+				<tr ng-repeat="week in calendar()">
+					<td ng-repeat="day in week" class="{{day.css}}">{{day.dd}}</td>
+				</tr>
+			</table>
+		</div>
+	</form>
+</body>
+</html>

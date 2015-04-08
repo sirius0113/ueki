@@ -1,0 +1,24 @@
+.th {
+	background: gray;
+}
+
+.css-today {
+	background: skyblue;
+}
+
+.css-none {
+	background: #eeeeee;
+}
+
+.color-sat {
+	color: #0000ff;
+}
+
+.color-sun {
+	color: #ff0000;
+}
+
+td {
+	height: 50px;
+	width: 120px;
+}

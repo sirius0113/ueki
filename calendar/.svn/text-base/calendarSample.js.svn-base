@@ -1,0 +1,200 @@
+console.log("calendarSample.js");
+var MyApp = angular.module('calendarApp', []);
+
+var date = new Date();				// 現在日付を取得
+var thisYear = date.getFullYear();
+var thisMonth = date.getMonth();
+var thisDate = date.getDate();
+
+var day = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday","sunday"];
+var carendar = [
+[{dd: "", css: ""},{dd: "", css: ""},{dd: "", css: ""},{dd: "", css: ""},{dd: "", css: ""},{dd: "", css: ""},{dd: "", css: ""}],
+[{dd: "", css: ""},{dd: "", css: ""},{dd: "", css: ""},{dd: "", css: ""},{dd: "", css: ""},{dd: "", css: ""},{dd: "", css: ""}],
+[{dd: "", css: ""},{dd: "", css: ""},{dd: "", css: ""},{dd: "", css: ""},{dd: "", css: ""},{dd: "", css: ""},{dd: "", css: ""}],
+[{dd: "", css: ""},{dd: "", css: ""},{dd: "", css: ""},{dd: "", css: ""},{dd: "", css: ""},{dd: "", css: ""},{dd: "", css: ""}],
+[{dd: "", css: ""},{dd: "", css: ""},{dd: "", css: ""},{dd: "", css: ""},{dd: "", css: ""},{dd: "", css: ""},{dd: "", css: ""}],
+[{dd: "", css: ""},{dd: "", css: ""},{dd: "", css: ""},{dd: "", css: ""},{dd: "", css: ""},{dd: "", css: ""},{dd: "", css: ""}]
+];
+
+MyApp.service('CalendarService', [function () {
+console.log("service");
+	var week = [6,0, 1, 2, 3, 4, 5];	// 月曜始まりにするための変換テーブル
+	var monthdays = new Array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
+
+	this.year = function() {
+		return thisYear;
+	}
+
+	this.month = function() {
+		return thisMonth + 1;
+	}
+
+	this.header = function() {
+console.log("this.header");
+		return day;
+	}
+
+	// CSS set
+	this.week = function(day){
+console.log("this.week");
+		var css = "";
+		if(week[day] == 6){
+			css = "color-sun";
+		} else if(week[day] == 5){
+			css = "color-sat";
+		}
+		return css;
+	}
+
+	this.calendar = function() {
+console.log("this.calendar");
+		var date = new Date(thisYear, thisMonth, thisDate);	//
+//		var date = new Date();				// 現在日付を取得
+//        date.setMonth( 1 );
+console.log(date);
+
+		var year = date.getFullYear();
+		// うるう年の計算
+		if (((year % 4) == 0 && (year % 100) != 0) || (year % 400) == 0){
+			monthdays[1] = 29;
+		}
+
+		// 月を取得
+		var month = date.getMonth();
+		thisMonth = month;
+		// 今日の日を取得
+		var today = date.getDate();
+		var nextDate = 1; // 来月用
+
+		// 一日を取得
+		date.setDate(1);
+
+		var day;				// 曜日
+		var index = 1;			// 日付
+
+		for(var i = 0; i < 6; i++) {
+			// 1 week init
+			for(var j = 0; j < 7; j++) {
+				carendar[i][j].dd = "";
+				carendar[i][j].css = "";
+			}
+			// Last month set
+			if(i == 0){
+				var date1 = new Date(thisYear, thisMonth, thisDate);
+				date1.setDate(1);
+				var day1 = date1.getDay(); // 曜日
+
+				var restDay = 6 - ( 6 - [week[day1]] ); // 先月分表示数
+console.log("restDay = " + restDay);
+				var lastMonth = thisMonth -1;
+				if(lastMonth == -1){
+					lastMonth = 11;
+				}
+				var lastDay = monthdays[lastMonth];
+console.log("lastDay = " + lastDay);
+				lastDay = lastDay - restDay;
+
+				var date1 = new Date(thisYear, lastMonth, 1);
+				for(var j = 0;j < restDay+1 ; j++){
+					date1.setDate(lastDay);
+					day1 = date1.getDay(); // 曜日
+
+					carendar[i][week[day1]].dd = date1.getDate();
+					carendar[i][week[day1]].css = this.week(day1) + " css-none";
+
+					lastDay++;
+				}
+			}
+
+			for(var j = 0; j < 7; j++) {
+				if( index > monthdays[month]){
+					// Next Month
+					if(nextDate == 1){
+						var nextYear = thisYear;
+						var nextMonth = thisMonth +1;
+						if(nextMonth == 12){
+							nextMonth = 0;
+							nextYear++;
+						}
+						date2 = new Date(nextYear, nextMonth, nextDate);
+					}
+					date2.setDate(nextDate);
+					day = date2.getDay(); // 曜日
+
+					carendar[i][week[day]].dd = date2.getDate();
+					carendar[i][week[day]].css = this.week(day) + " css-none";
+					nextDate++;
+				}else{
+					// This Month
+					date.setDate(index);
+					day = date.getDay(); // 曜日
+
+					carendar[i][week[day]].dd = date.getDate();
+
+					var css = this.week(day);
+
+					if(date.getDate() == today){
+						css = css + " css-today";
+					} else {
+						css = css;
+					}
+
+					carendar[i][week[day]].css = css;
+					index++;
+				}
+				if (week[day] == 6) break; // 土曜日
+			}
+		}
+//console.log(carendar);
+		return carendar;
+	}
+}]);
+
+
+MyApp.controller('CalendarCtrl', ['$scope', 'CalendarService', function ($scope, CalendarService) {
+console.log("controller");
+
+	$scope.calendar = function() {
+		return CalendarService.calendar();
+	}
+	$scope.year = function() {
+		return CalendarService.year();
+	}
+	$scope.month = function() {
+		return CalendarService.month();
+	}
+	$scope.header = function() {
+		return CalendarService.header();
+	}
+	$scope.incYear =  function() {
+		thisYear++;
+	}
+	$scope.delYear =  function() {
+		thisYear--;
+	}
+	$scope.incMonth =  function() {
+		thisMonth++;
+		if(thisMonth == 12){
+			thisMonth = 0;
+			thisYear++;
+		}
+	}
+	$scope.delMonth =  function() {
+		thisMonth--;
+		if(thisMonth == -1){
+			thisMonth = 11;
+			thisYear--;
+		}
+	}
+	$scope.inputYear =  function() {
+console.log($scope.year2);
+		thisYear = $scope.year2;
+	}
+	$scope.today = function(){
+		date = new Date();				// 現在日付を取得
+		thisYear = date.getFullYear();
+		thisMonth = date.getMonth();
+		thisDate = date.getDate();
+	}
+}]);
+
